@@ -27,7 +27,7 @@ namespace Data.Contexts
 
             modelBuilder.Entity<CategoryEntity>().HasKey(c => c.Id);
 
-            modelBuilder.Entity<CategoryEntity>().HasMany(x => x.Subcategories).WithOne().HasForeignKey(x => x.Id);
+            modelBuilder.Entity<CategoryEntity>().HasMany(x => x.Subcategories).WithOne(x => x.Category).HasForeignKey(x => x.CategoryId).OnDelete(DeleteBehavior.Cascade);
 
             modelBuilder.Entity<SubcategoryEntity>()
                 .HasKey(s => s.Id);

@@ -83,5 +83,31 @@ namespace SummerFunctionProducts.Services
                 return null!;
             }
         }
+
+        //Delete
+        public async Task<IActionResult> DeleteAsync(DeleteProductModel delete)
+        {
+            try
+            {
+                if (delete != null)
+                {
+                    var result = await _context.Products.FirstOrDefaultAsync(x => x.Headline == delete.Headline|| x.Id == delete.Id);
+
+                    if(result != null)
+                    {
+                        _context.Products.Remove(result);
+                        await _context.SaveChangesAsync();
+                        return new OkResult();
+                    }
+                }
+
+                return new BadRequestResult();
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.Message);
+                return null!;
+            }
+        }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Data.Entities
 {
@@ -9,6 +10,11 @@ namespace Data.Entities
 
         [MaxLength(100)]
         public string SubategoryName { get; set; } = null!;
-        
+
+        public int CategoryId { get; set; }
+
+        [ForeignKey("CategoryId")]
+        public CategoryEntity Category { get; set; } = null!;
+
     }
 }

@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using Data.Contexts;
 using SummerFunctionProducts.Services;
 using Data.Factory;
+using SummerFunctionProducts.Factory;
 
 var host = new HostBuilder()
     .ConfigureFunctionsWebApplication()
@@ -16,6 +17,8 @@ var host = new HostBuilder()
         services.AddDbContext<ProductContext>(x => x.UseSqlServer(Environment.GetEnvironmentVariable("SqlServer")));
         services.AddScoped<ProductServices>();
         services.AddScoped<ProductFactory>();
+        services.AddScoped<CategoryServices>();
+        services.AddScoped<ConvertCategory>();
     })
     .Build();
 

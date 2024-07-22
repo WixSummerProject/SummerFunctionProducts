@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Data.Migrations
 {
     [DbContext(typeof(ProductContext))]
-    [Migration("20240611092839_ProductsAndMigrationAdded")]
-    partial class ProductsAndMigrationAdded
+    [Migration("20240621061501_Init")]
+    partial class Init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -98,6 +98,12 @@ namespace Data.Migrations
             modelBuilder.Entity("Data.Entities.SubcategoryEntity", b =>
                 {
                     b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("CategoryId")
                         .HasColumnType("int");
 
                     b.Property<string>("SubategoryName")
@@ -106,6 +112,8 @@ namespace Data.Migrations
                         .HasColumnType("nvarchar(100)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CategoryId");
 
                     b.ToTable("Subcategories");
                 });
@@ -121,11 +129,13 @@ namespace Data.Migrations
 
             modelBuilder.Entity("Data.Entities.SubcategoryEntity", b =>
                 {
-                    b.HasOne("Data.Entities.CategoryEntity", null)
+                    b.HasOne("Data.Entities.CategoryEntity", "Category")
                         .WithMany("Subcategories")
-                        .HasForeignKey("Id")
+                        .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Category");
                 });
 
             modelBuilder.Entity("Data.Entities.CategoryEntity", b =>
