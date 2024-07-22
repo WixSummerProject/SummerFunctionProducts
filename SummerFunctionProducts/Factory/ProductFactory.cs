@@ -7,6 +7,17 @@ namespace Data.Factory
     {
         public async Task<ProductEntity> ConvertProduct(CreateProductModel model)
         {
+            bool sell = false;
+
+            if (model.SellBuy == "sell")
+            {
+                sell = false;
+            }
+            else if (model.SellBuy == "buy")
+            {
+                sell = true;
+            }
+
             var productEntity = new ProductEntity
             {
                 Id = model.Id,
@@ -17,8 +28,8 @@ namespace Data.Factory
                 Images = model.Images,
                 Place = model.Place,
                 Price = model.Price,
-                SellBuy = model.SellBuy,
-            };
+                SellBuy = sell,
+        };
 
             return productEntity;
         }

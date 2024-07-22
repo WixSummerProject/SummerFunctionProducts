@@ -15,7 +15,7 @@ namespace SummerFunctionProducts.Models
 
         public string? Category { get; set; }
 
-        public bool SellBuy { get; set; } = false;
+        public string SellBuy { get; set; } = null!;
 
         public List<ImageEntity>? Images { get; set; }
 
