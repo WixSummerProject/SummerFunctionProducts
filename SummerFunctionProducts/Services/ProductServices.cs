@@ -1,5 +1,6 @@
 ﻿
 using Data.Contexts;
+using Data.Entities;
 using Data.Factory;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -108,6 +109,43 @@ namespace SummerFunctionProducts.Services
                 Debug.WriteLine(ex.Message);
                 return null!;
             }
+        }
+
+        // Get All Products
+        public async Task<List<CreateProductModel>> GetProductsAsync()
+        {
+            try
+            {
+                List<ProductEntity> products = _context.Products.ToList();
+
+                if(products != null && products.Any())
+                {
+                    var listToReturn = new List<CreateProductModel>();
+
+                    foreach (var product in products)
+                    {
+                        var productModel = new CreateProductModel
+                        {
+                            DateCreated = product.DateCreated,
+                            Description = product.Description,
+                            Category = product.Category,
+                            Headline = product.Headline,
+                            Images = product.Images,
+                            Place = product.Place,
+                            Id = product.Id,
+                            Price = product.Price,
+                            SellBuy = product.SellBuy.ToString(),
+                        };
+
+                        listToReturn.Add(productModel);
+                    }
+
+                    return listToReturn;
+                }
+
+                return null!;
+            }
+            catch (Exception ex){ Debug.WriteLine(ex.Message); return null!; }
         }
     }
 }
