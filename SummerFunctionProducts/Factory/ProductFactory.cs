@@ -25,7 +25,7 @@ namespace Data.Factory
                 Category = model.Category,
                 Description = model.Description,
                 DateCreated = model.DateCreated,
-                Images = model.Images,
+                ImageUrl = model.Images,
                 Place = model.Place,
                 Price = model.Price,
                 SellBuy = sell,

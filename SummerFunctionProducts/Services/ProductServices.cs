@@ -130,7 +130,7 @@ namespace SummerFunctionProducts.Services
                             Description = product.Description,
                             Category = product.Category,
                             Headline = product.Headline,
-                            Images = product.Images,
+                            Images = product.ImageUrl,
                             Place = product.Place,
                             Id = product.Id,
                             Price = product.Price,

@@ -19,6 +19,8 @@ namespace Data.Entities
 
         public List<ImageEntity>? Images { get; set; }
 
+        public List<string>? ImageUrl { get; set; }
+
         [MaxLength(100)]
         public string Price { get; set; } = null!;
         

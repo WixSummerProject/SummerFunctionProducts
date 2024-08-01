@@ -17,7 +17,7 @@ namespace SummerFunctionProducts.Models
 
         public string SellBuy { get; set; } = null!;
 
-        public List<ImageEntity>? Images { get; set; }
+        public List<string>? Images { get; set; }
 
         [MaxLength(100)]
         public string Price { get; set; } = null!;
