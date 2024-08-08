@@ -15,6 +15,8 @@ namespace Data.Entities
 
         public string? Category {  get; set; }
 
+        public string? Subcategory { get; set; }
+
         public bool SellBuy { get; set; } = false;
 
         public List<ImageEntity>? Images { get; set; }

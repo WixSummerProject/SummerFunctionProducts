@@ -15,9 +15,11 @@ namespace SummerFunctionProducts.Models
 
         public string? Category { get; set; }
 
+        public string? Subcategory { get; set; }
+
         public string SellBuy { get; set; } = null!;
 
-        public List<string>? Images { get; set; }
+        public List<string>? Imgtemp { get; set; }
 
         [MaxLength(100)]
         public string Price { get; set; } = null!;

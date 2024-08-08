@@ -66,6 +66,8 @@ namespace SummerFunctionProducts.Services
             {
                 if (model.Headline != null)
                 {
+                    var y = model.Headline;
+
                     var result = await _context.Products.FirstOrDefaultAsync(x => x.Headline == model.Headline);
 
                     if(result != null)
@@ -130,7 +132,7 @@ namespace SummerFunctionProducts.Services
                             Description = product.Description,
                             Category = product.Category,
                             Headline = product.Headline,
-                            Images = product.ImageUrl,
+                            Imgtemp = product.ImageUrl,
                             Place = product.Place,
                             Id = product.Id,
                             Price = product.Price,
