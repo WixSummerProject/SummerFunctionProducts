@@ -19,7 +19,7 @@ namespace SummerFunctionProducts.Models
 
         public string SellBuy { get; set; } = null!;
 
-        public List<string>? Imgtemp { get; set; }
+        public List<string>? ImageUrl { get; set; }
 
         [MaxLength(100)]
         public string Price { get; set; } = null!;
